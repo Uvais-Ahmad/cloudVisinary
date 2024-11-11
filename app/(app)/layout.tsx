@@ -45,11 +45,11 @@ function AppLayout({
             {/* Content */}
             <div className="drawer-content flex flex-col">
                 <header className='w-full bg-base-200'>
-                    <div className='navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                        <div className='flex-none'>
-                        <label
+                    <div className='navbar justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                        <div className='flex-none lg:hidden'>
+                            <label
                                 htmlFor="drawer-sidebar"
-                                className="btn btn-square btn-ghost drawer-button"
+                                className="btn btn-square  btn-ghost drawer-button"
                             >
                                 <MenuIcon />
                             </label>
@@ -57,13 +57,13 @@ function AppLayout({
 
                         <div>
                             <Link href="/" onClick={handleLogoClick}>
-                                <div className="btn btn-ghost normal-case text-2xl font-bold tracking-tight cursor-pointer">
+                                <div className="btn text-gray-300 btn-ghost normal-case text-2xl font-bold tracking-tight cursor-pointer">
                                     Cloudinary Showcase
                                 </div>
                             </Link>
                         </div>
 
-                        <div className='flex-none flex items-center space-x-4'>
+                        <div className='flex-none flex items-center ml-14  space-x-4'>
                             {user && (
                                 <>
                                     <div className="avatar">
@@ -76,14 +76,14 @@ function AppLayout({
                                             />
                                         </div>
                                     </div>
-                                    <span className="text-sm truncate max-w-xs lg:max-w-md">
+                                    <span className="text-sm text-gray-300 truncate max-w-xs lg:max-w-md">
                                         {user.username || user.emailAddresses[0].emailAddress}
                                     </span>
                                     <button
                                         onClick={handleSignOut}
                                         className="btn btn-ghost btn-circle"
                                     >
-                                        <LogOutIcon className="h-6 w-6" />
+                                        <LogOutIcon className="h-6 w-6 text-gray-300" />
                                     </button>
                                 </>
                             )}
@@ -91,7 +91,7 @@ function AppLayout({
                     </div>
                 </header>
                 {/* Page Content */}
-                <main className="flex-grow">
+                <main className="flex-grow bg-base-300">
                     <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-8">
                         {children}
                     </div>
@@ -125,7 +125,7 @@ function AppLayout({
                     <div className="p-4">
                         <button
                             onClick={handleSignOut}
-                            className="btn btn-outline btn-error w-full"
+                            className="btn btn-outline btn-info w-full"
                         >
                             <LogOutIcon className="mr-2 h-5 w-5" />
                             Sign Out
