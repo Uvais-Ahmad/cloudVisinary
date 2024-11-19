@@ -75,6 +75,10 @@ function SocialShare() {
         }
     }
 
+    const handleDownload = () => {
+        if(!imageRef.current) return;
+    }
+
     return (
         <div>SocialShare</div>
     )
