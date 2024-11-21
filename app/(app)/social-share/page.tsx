@@ -77,16 +77,18 @@ function SocialShare() {
 
     const handleDownload = () => {
         if(!imageRef.current) return;
-
+        // fetch the URL of the image and convert it to blob
         fetch(imageRef.current.src)
         .then(response => response.blob())
         .then((blob) => {
+            // create a URL for the blob and create an anchor tag to download the image
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
             a.download = "social-share.png";
             document.body.appendChild(a);
             a.click();
+            // remove the anchor tag and revoke the URL
             document.body.removeChild(a);
             URL.revokeObjectURL(url);  
         })
