@@ -91,7 +91,7 @@ function AppLayout({
                     </div>
                 </header>
                 {/* Page Content */}
-                <main className="flex-grow bg-base-300">
+                <main className="flex-grow bg-base-300 text-white">
                     <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 my-8">
                         {children}
                     </div>
