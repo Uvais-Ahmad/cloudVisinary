@@ -23,7 +23,23 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
             quality: 'auto',
             assetType: 'video'
         })
-    }, [])
+    }, []);
+
+
+    const getPreviewVideoUrl = useCallback((publicId: string) => {
+        return getCldVideoUrl({
+            src: publicId,
+            width: 400,
+            height: 225,
+            rawTransformations: ["e_preview:duration_15:max_seg_9:min_seg_dur_1"]
+        })
+    }, []);
+
+    const formatSize = useCallback((size: number) => {
+        return filesize(size);
+    }, []);
+
+    
     return (
         <div>
 
