@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+import { CldImage } from 'next-cloudinary';
 
-function Home() {
+const Home = () => {
     return (
-        <div>Home</div>
+        <div>
+
+        </div>
     )
 }
 
