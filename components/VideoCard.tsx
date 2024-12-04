@@ -39,7 +39,23 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
         return filesize(size);
     }, []);
 
+    const formatDuration = useCallback((seconds : number) => {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.round(seconds % 60);
+        return `${minutes}:${remainingSeconds?.toString().padStart(2, '0')}`;
+    }, []);
     
+    const compressionPercentage = Math.round(
+        (1 - Number(video.compressedSize) / Number(video.originalSize)) * 100
+    )
+
+    useEffect(() => {
+        setPreviewError(false);
+    }, [isHovered]);
+    const handlePreviewError = () => {
+        setPreviewError(true);
+    }
+
     return (
         <div>
 
