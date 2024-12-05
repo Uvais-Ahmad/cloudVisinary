@@ -57,7 +57,10 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
     }
 
     return (
-        <div>
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
 
         </div>
     )
