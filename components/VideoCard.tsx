@@ -58,9 +58,36 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
 
     return (
         <div
+            className="card bg-base-100 shadow-xl hover:shadow-2xl
+            transition-all duration-300"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
+            <figure className='aspect-video relative'>
+                {isHovered ? (
+                    previewError ? (
+                        <div className='w-full h-full flex items-center justify-center bg-gray-200'>
+                            <p className='text-red-500'>Preview not available</p>
+                        </div>
+                    ) : (
+                        <video 
+                            src={getPreviewVideoUrl(video.publicId)}
+                            autoPlay
+                            muted
+                            loop
+                            className='w-full h-full object-cover'
+                            onError={handlePreviewError}
+                        />
+                    )
+                ) : (
+                    <img 
+                        src={getThumbnailUrl(video.publicId)}
+                        alt={video.title}
+                        className='w-full h-full object-cover'
+                    />
+                )}
+
+            </figure>
 
         </div>
     )
