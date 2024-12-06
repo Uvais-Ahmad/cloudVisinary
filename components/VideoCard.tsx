@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react'
 import {getCldImageUrl, getCldVideoUrl} from 'next-cloudinary'
 import { filesize } from 'filesize'
 import { Video } from '@prisma/client'
+import { Clock } from 'lucide-react'
 
 interface VideoCardProps {
     video : Video,
@@ -86,7 +87,13 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
                         className='w-full h-full object-cover'
                     />
                 )}
-
+                <div
+                    className='absolute bg-base-100 bottom-2 right-2 bg-opacity-70 px-2 py-1 
+                    rounded-lg text-sm flex items-center'
+                >
+                    <Clock size={16} className='mr-1' />
+                    {formatDuration(video.duration)}
+                </div>
             </figure>
 
         </div>
