@@ -2,7 +2,8 @@ import React, {useState, useEffect, useCallback} from 'react'
 import {getCldImageUrl, getCldVideoUrl} from 'next-cloudinary'
 import { filesize } from 'filesize'
 import { Video } from '@prisma/client'
-import { Clock } from 'lucide-react'
+import { Clock, Download, FileDown, FileUp } from 'lucide-react'
+import dayjs from 'dayjs'
 
 interface VideoCardProps {
     video : Video,
@@ -50,6 +51,15 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
         (1 - Number(video.compressedSize) / Number(video.originalSize)) * 100
     )
 
+    const getFullVideoUrl = useCallback((publicId: string) => {
+        return getCldVideoUrl({
+            src: publicId,
+            width: 1920,
+            height: 1080,
+
+        })
+    }, []);
+
     useEffect(() => {
         setPreviewError(false);
     }, [isHovered]);
@@ -95,6 +105,44 @@ const VideoCard: React.FC<VideoCardProps> = ({video, onDownload}) => {
                     {formatDuration(video.duration)}
                 </div>
             </figure>
+            <div className='card-body p-4'>
+                <h2 className='card-title text-lg font-bold'>{video.title}</h2>
+                <p className='text-sm text-base-content opacity-70 mb-4'>{video.description}</p>
+                <p>Uploaded {dayjs(video.createdAt).format('MMMM D, YYYY')}</p>
+
+                <div className='grid grid-cols-2 gap-4 text-sm'>
+                    <div className='flex items-center'>
+                        <FileUp size={18} className='mr-2 text-primary' />
+                        <div>
+                            <div className='font-semibold'>Original</div>
+                            <div>{formatSize(Number(video.originalSize))}</div>
+                        </div>
+                    </div>
+                    
+                    <div className='flex items-center'>
+                        <FileDown size={18} className='mr-2 text-secondary' />
+                        <div>
+                            <div className='font-semibold'>Compressed</div>
+                            <div>{formatSize(Number(video.compressedSize))}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex justify-between items-center mt-4">
+                    <div className="text-sm font-semibold">
+                        Compression:{" "}
+                        <span className="text-accent">{compressionPercentage}%</span>
+                    </div>
+                    <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() =>
+                        onDownload(getFullVideoUrl(video.publicId), video.title)
+                        }
+                    >
+                        <Download size={16} />
+                    </button>
+                </div>
+            </div>
 
         </div>
     )
