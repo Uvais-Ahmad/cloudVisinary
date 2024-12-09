@@ -4,6 +4,7 @@ import { dark } from '@clerk/themes'
 export default function Page() {
     return (
         <div className='flex self-center'>
+            {/* Need to customize this component */}
             <SignIn appearance={{
                 baseTheme: dark,
                 elements : {
