@@ -2,30 +2,31 @@
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { BackgroundBeams } from "../components/ui/background-beams";
 import Link from "next/link";
+import { Boxes } from "@/components/ui/background-boxes";
 // import { Button } from "../components/ui/moving-border";
 
 export default function Page() {
   const words = [
     {
       text: "Social",
-      className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500",
+      className: "py-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500",
     },
     {
       text: "Content",
-      className: "text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500",
+      className: "py-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500",
     },
     {
       text: "Management",
-      className: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500",
+      className: "py-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500",
     },
     {
       text: "Platform",
-      className: "text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-emerald-500",
+      className: "py-2 text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-emerald-500",
     },
   ];
 
   return (
-    <div className="h-screen relative w-full bg-gradient-to-b from-black via-gray-900 to-black antialiased bg-grid-white/[0.02] flex items-center justify-center">
+    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center justify-center h-full">
           {/* Title with Typewriter Effect */}
@@ -49,8 +50,8 @@ export default function Page() {
       </div>
       
       {/* Background Effect */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-cyan-900/20 to-blue-900/20 opacity-50" />
-      <BackgroundBeams />
+      <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      <Boxes />
     </div>
   );
 }
