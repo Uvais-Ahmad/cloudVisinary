@@ -14,13 +14,16 @@
     "@prisma/client": "^5.21.1",
     "axios": "^1.7.7",
     "cloudinary": "^2.5.1",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "filesize": "^10.1.6",
     "lucide-react": "^0.456.0",
+    "motion": "^12.4.0",
     "next": "14.2.14",
     "next-cloudinary": "^6.16.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.16.12",
